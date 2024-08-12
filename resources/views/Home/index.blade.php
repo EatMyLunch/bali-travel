@@ -29,7 +29,7 @@
     }
 </style>
 
-<!-- Banner Carousel -->
+<!-- Banner -->
 <div class="owl-carousel owl-theme banner-carousel">
     @foreach($banners as $banner)
         <div class="item">
@@ -38,7 +38,7 @@
     @endforeach
 </div>
 
-<!-- Travel Deals Section -->
+<!-- Package Header -->
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-8">
@@ -60,14 +60,14 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $package->name }}</h5>
                         <p class="card-text">{{ $package->description }}</p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="/bookings/order/{{ $package->id}}" target="_blank" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
     <div class="text-center mt-4">
-        <a href="{{ route('packages.index') }}" class="btn btn-dark">View More Packages</a>
+        <a href="{{ route('bookings.index') }}" class="btn btn-dark">View More Packages</a>
     </div>
 </div>
 

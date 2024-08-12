@@ -1,0 +1,5 @@
+.btn-secondary {
+    --bs-btn-bg: #eaeaea;
+    --bs-btn-hover-bg: #ebebebbc;
+    --bs-btn-active-bg: #ebebebbc;
+}

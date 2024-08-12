@@ -3,14 +3,17 @@
 @section('content')
 <div class="container mt-4">
     <h1 class="mb-3">Videos</h1>
-    <a href="{{ route('videos.create') }}" class="btn btn-primary">Create New Video</a>
-    <table class="table mt-3">
+    <div id="toolbar">
+        <a href="{{ route('videos.create') }}" class="btn btn-primary">Create New Video</a>
+    </div>
+    <table class="table-striped mt-3" id="table" data-toggle="table" data-toolbar="#toolbar" data-pagination="true" data-search="true"
+    data-cookie="true" data-cookie-id-table="videoId">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Url</th>
-                <th>Actions</th>
+                <th data-field="id" data-sortable="true">ID</th>
+                <th data-field="name" data-sortable="true">Name</th>
+                <th data-field="url" data-sortable="true">Url</th>
+                <th data-field="actions" data-formatter="actionsFormatter">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -33,3 +36,24 @@
     </table>
 </div>
 @endsection
+
+@push('styles')
+<link href="https://unpkg.com/bootstrap-table@1.23.2/dist/bootstrap-table.min.css" rel="stylesheet">
+@endpush
+
+@push('scripts')
+<script src="https://unpkg.com/bootstrap-table@1.23.2/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.23.2/dist/extensions/cookie/bootstrap-table-cookie.min.js"></script>
+<script>
+    function actionsFormatter(value, row) {
+        return `
+            <a href="/videos/${row.id}/edit" class="btn btn-sm btn-info">Edit</a>
+            <form action="/videos/${row.id}" method="POST" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+            </form>
+        `;
+    }
+</script>
+@endpush
