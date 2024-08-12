@@ -6,7 +6,7 @@
     <form action="{{ route('banners.update', $banner->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label for="image">Image URL:</label>
             <input type="text" class="form-control" id="image" name="image" value="{{ $banner->image }}" required>
         </div>

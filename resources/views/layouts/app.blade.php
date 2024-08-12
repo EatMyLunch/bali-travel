@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Bali Travel')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <style>
         html,
         body {
@@ -27,24 +30,43 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="/">Bali Travel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
+          <a class="navbar-brand" href="{{ route('home.index') }}">Bali Travel</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Book Travel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="{{ route('banners.index') }}">Front Page Banner</a>
+                  <a class="dropdown-item" href="{{ route('packages.index') }}">Packages</a>
+                  <a class="dropdown-item" href="{{ route('videos.index') }}">Videos Branding</a>
+                  <a class="dropdown-item" href="#">News</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Buyer list</a>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
+      </nav>
 
     @if ($message = Session::get('success'))
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
@@ -93,12 +115,13 @@
             </div>
         </div>
         <div class="text-center p-3" style="background-color: rgba(44, 44, 44, 0.2);">
-            © 2024 Bali Travel. All rights reserved.
+            © 2024 Andas Puranda. All rights reserved.
         </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var toastElList = [].slice.call(document.querySelectorAll('.toast'))
@@ -112,6 +135,7 @@
         });
     </script>
     @yield('scripts')
+    @stack('scripts')
 </body>
 
 </html>

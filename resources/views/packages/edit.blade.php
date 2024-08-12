@@ -14,7 +14,7 @@
             <label for="image">Image URL:</label>
             <input type="text" class="form-control" id="image" name="image" value="{{ $package->image }}" required>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-2">
             <label for="description">Description:</label>
             <input type="text" class="form-control" id="description" name="description" value="{{ $package->description }}" required>
         </div>
