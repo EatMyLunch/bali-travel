@@ -8,8 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <style>
         html,
@@ -35,44 +37,63 @@
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home.index') }}">Bali Travel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\HomeController ? 'active' : '' }}" href="{{ route('home.index') }}">
+                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\HomeController ? 'active' : '' }}"
+                            href="{{ route('home.index') }}">
                             Home <span class="visually-hidden">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\BookingController ? 'active' : '' }}" href="{{ route('bookings.index') }}">Book Travel</a>
+                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\BookingController ? 'active' : '' }}"
+                            href="{{ route('bookings.index') }}">Book Travel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\AboutController ? 'active' : '' }}" href="{{ route('about.index') }}">About</a>
+                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\AboutController ? 'active' : '' }}"
+                            href="{{ route('about.index') }}">About</a>
                     </li>
+                    @auth('admin')
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle 
                             {{ request()->route()->getController() instanceof \App\Http\Controllers\BannerController 
                             || request()->route()->getController() instanceof \App\Http\Controllers\PackageController 
-                            || request()->route()->getController() instanceof \App\Http\Controllers\VideoController ? 'active' : '' }}" 
-                            data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin
+                            || request()->route()->getController() instanceof \App\Http\Controllers\VideoController ? 'active' : '' }}"
+                            data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                            aria-expanded="false">Admin
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\BannerController ? 'active' : '' }}" href="{{ route('banners.index') }}">Front Page Banner</a>
-                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\PackageController ? 'active' : '' }}" href="{{ route('packages.index') }}">Packages</a>
-                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\VideoController ? 'active' : '' }}" href="{{ route('videos.index') }}">Videos Branding</a>
+                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\BannerController ? 'active' : '' }}"
+                                href="{{ route('banners.index') }}">Front Page Banner</a>
+                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\PackageController ? 'active' : '' }}"
+                                href="{{ route('packages.index') }}">Packages</a>
+                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\VideoController ? 'active' : '' }}"
+                                href="{{ route('videos.index') }}">Videos Branding</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\OrderController ? 'active' : '' }}" href="{{ route('orders.index') }}">Order List</a>
+                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\OrderController ? 'active' : '' }}"
+                            href="{{ route('orders.index') }}">Order List</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
     </nav>
-    
-      
+
+
     @if ($message = Session::get('success'))
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
