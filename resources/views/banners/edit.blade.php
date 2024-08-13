@@ -10,7 +10,7 @@
             <label for="image">Image URL:</label>
             <input type="text" class="form-control" id="image" name="image" value="{{ $banner->image }}" required>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary mt-2">Update</button>
     </form>
 </div>
 @endsection

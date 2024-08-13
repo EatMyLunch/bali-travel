@@ -49,10 +49,7 @@
                         <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\BookingController ? 'active' : '' }}" href="{{ route('bookings.index') }}">Book Travel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\NewsController ? 'active' : '' }}" href="#">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\AboutController ? 'active' : '' }}" href="#">About</a>
+                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\AboutController ? 'active' : '' }}" href="{{ route('about.index') }}">About</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle 
@@ -65,10 +62,10 @@
                             <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\BannerController ? 'active' : '' }}" href="{{ route('banners.index') }}">Front Page Banner</a>
                             <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\PackageController ? 'active' : '' }}" href="{{ route('packages.index') }}">Packages</a>
                             <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\VideoController ? 'active' : '' }}" href="{{ route('videos.index') }}">Videos Branding</a>
-                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\NewsController ? 'active' : '' }}" href="#">News</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\OrderController ? 'active' : '' }}" href="{{ route('orders.index') }}">Buyer list</a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->route()->getController() instanceof \App\Http\Controllers\OrderController ? 'active' : '' }}" href="{{ route('orders.index') }}">Order List</a>
                     </li>
                 </ul>
             </div>

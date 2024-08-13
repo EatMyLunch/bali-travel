@@ -3,3 +3,8 @@
     --bs-btn-hover-bg: #ebebebbc;
     --bs-btn-active-bg: #ebebebbc;
 }
+
+.label-required::after {
+    content: "*";
+    color: red;
+}

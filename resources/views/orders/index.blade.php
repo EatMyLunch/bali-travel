@@ -41,8 +41,8 @@
                 <td>{{ $order->accommodation }}</td>
                 <td>{{ $order->transportation }}</td>
                 <td>{{ $order->food }}</td>
-                <td>{{ $order->travel_price }}</td>
-                <td>{{ $order->total_bill }}</td>
+                <td>{{ $order->formatted_travel_price }}</td>
+                <td>{{ $order->formatted_total_bill }}</td>
                 <td></td>
             </tr>
             @endforeach
@@ -61,7 +61,7 @@
 <script>
     function actionsFormatter(value, row) {
         return `
-            <a href="/orders/${row.id}/edit" class="btn btn-sm btn-info">Manual Edit</a>
+            <a href="/orders/${row.id}/edit" class="btn btn-sm btn-info">Edit</a>
             <form action="/orders/${row.id}" method="POST" style="display: inline-block;">
                 @csrf
                 @method('DELETE')

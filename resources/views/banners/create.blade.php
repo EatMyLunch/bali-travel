@@ -9,7 +9,7 @@
             <label for="image">Image URL:</label>
             <input type="text" class="form-control" id="image" name="image" required>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary mt-2">Submit</button>
     </form>
 </div>
     

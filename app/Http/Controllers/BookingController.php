@@ -55,15 +55,33 @@ class BookingController extends Controller
             'package_name' => 'required|string|max:255',
             'total_participant' => 'required|integer|min:1',
             'total_day' => 'required|integer|min:1',
-            'accommodation' => 'boolean',
-            'transportation' => 'boolean',
-            'food' => 'boolean',
+            'accommodation' => 'nullable|boolean',
+            'transportation' => 'nullable|boolean',
+            'food' => 'nullable|boolean',
+            'travel_price' => 'required|integer|min:0',
+            'total_bill' => 'required|integer|min:0',
         ]);
+
+        // Properly handle checkbox values
         $validatedData['accommodation'] = $request->has('accommodation');
         $validatedData['transportation'] = $request->has('transportation');
         $validatedData['food'] = $request->has('food');
+
+        // Recalculate travel_price and total_bill to ensure accuracy
+        $travelPrice = 0;
+        if ($validatedData['accommodation']) $travelPrice += 1000000;
+        if ($validatedData['transportation']) $travelPrice += 1200000;
+        if ($validatedData['food']) $travelPrice += 500000;
+
+        $totalBill = $validatedData['total_participant'] * $validatedData['total_day'] * $travelPrice;
+
+        // Update the validated data with recalculated values
+        $validatedData['travel_price'] = $travelPrice;
+        $validatedData['total_bill'] = $totalBill;
+
         $order = Order::create($validatedData);
+
         return redirect()->route('bookings.index')
-            ->with('success', 'Booking success');
+            ->with('success', 'Booking successful');
     }
 }
