@@ -73,6 +73,8 @@
                                 href="{{ route('packages.index') }}">Packages</a>
                             <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\VideoController ? 'active' : '' }}"
                                 href="{{ route('videos.index') }}">Videos Branding</a>
+                            <a class="dropdown-item {{ request()->route()->getController() instanceof \App\Http\Controllers\AccessController ? 'active' : '' }}"
+                                href="{{ route('access.index') }}">Admin Access</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -80,10 +82,12 @@
                             href="{{ route('orders.index') }}">Order List</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a href="{{ route('admin.logout') }}" class="nav-link"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Logout
                         </a>
-                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST"
+                            style="display: none;">
                             @csrf
                         </form>
                     </li>

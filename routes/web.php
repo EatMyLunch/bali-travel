@@ -8,6 +8,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AccessController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Middleware\AdminMiddleware;
 
@@ -30,5 +31,5 @@ Route::middleware([AdminMiddleware::class])->group(function () {
     Route::resource('packages', PackageController::class);
     Route::resource('videos', VideoController::class);
     Route::resource('orders', OrderController::class);
+    Route::resource('access', AccessController::class);
 });
-

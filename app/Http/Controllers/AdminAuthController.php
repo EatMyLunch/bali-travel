@@ -30,8 +30,8 @@ class AdminAuthController extends Controller
     public function test()
     {
         $admin = Admin::create([
-            'username' => 'admin',
-            'password' => Hash::make('password')
+            'username' => 'andas',
+            'password' => Hash::make('loollool')
         ]);
 
         return "Admin user created successfully. Username: admin, Password: password";
