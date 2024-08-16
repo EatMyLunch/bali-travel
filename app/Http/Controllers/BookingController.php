@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingConfirmation;
 
 class BookingController extends Controller
 {
@@ -80,7 +82,7 @@ class BookingController extends Controller
         $validatedData['total_bill'] = $totalBill;
 
         $order = Order::create($validatedData);
-
+        // Mail::to('ndasss.satu@gmail.com')->send(new BookingConfirmation());
         return redirect()->route('bookings.index')
             ->with('success', 'Booking successful');
     }

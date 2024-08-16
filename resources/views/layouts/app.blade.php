@@ -129,9 +129,8 @@
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                     <h5 class="text-uppercase">Links</h5>
                     <ul class="list-unstyled mb-0">
-                        <li><a href="#" class="text-dark">About Us</a></li>
-                        <li><a href="#" class="text-dark">Services</a></li>
-                        <li><a href="#" class="text-dark">Contact</a></li>
+                        <li><a href="/about" class="text-dark">About Us</a></li>
+                        <li><a href="https://wa.me/6289646746830" class="text-dark" target="_blank">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
