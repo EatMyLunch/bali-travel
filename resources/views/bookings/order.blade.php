@@ -6,7 +6,12 @@
     <form action="{{ route('bookings.store') }}" method="POST" id="bookingForm">
         @csrf
         <input type="hidden" name="package_name" value="{{ $package->name }}">
-        
+
+        <div class="mb-3">
+            <label for="order_date" class="form-label label-required">Travel Date</label>
+            <input type="date" class="form-control" id="order_date" name="order_date" required>
+        </div>
+
         <div class="mb-3">
             <label for="customer_name" class="form-label label-required">Your Name</label>
             <input type="text" class="form-control" id="customer_name" name="customer_name" required>

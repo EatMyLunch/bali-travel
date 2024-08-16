@@ -51,9 +51,11 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
+        //validation
         $validatedData = $request->validate([
             'customer_name' => 'required|string|max:255',
             'customer_phone' => 'required|string|max:20',
+            'order_date' => 'required|date',
             'package_name' => 'required|string|max:255',
             'total_participant' => 'required|integer|min:1',
             'total_day' => 'required|integer|min:1',
@@ -64,25 +66,23 @@ class BookingController extends Controller
             'total_bill' => 'required|integer|min:0',
         ]);
 
-        // Properly handle checkbox values
+        // checkbox value checker
         $validatedData['accommodation'] = $request->has('accommodation');
         $validatedData['transportation'] = $request->has('transportation');
         $validatedData['food'] = $request->has('food');
 
-        // Recalculate travel_price and total_bill to ensure accuracy
+        // Recalculate value for backend
         $travelPrice = 0;
         if ($validatedData['accommodation']) $travelPrice += 1000000;
         if ($validatedData['transportation']) $travelPrice += 1200000;
         if ($validatedData['food']) $travelPrice += 500000;
 
         $totalBill = $validatedData['total_participant'] * $validatedData['total_day'] * $travelPrice;
-
-        // Update the validated data with recalculated values
+        
         $validatedData['travel_price'] = $travelPrice;
         $validatedData['total_bill'] = $totalBill;
 
         $order = Order::create($validatedData);
-        // Mail::to('ndasss.satu@gmail.com')->send(new BookingConfirmation());
         return redirect()->route('bookings.index')
             ->with('success', 'Booking successful');
     }

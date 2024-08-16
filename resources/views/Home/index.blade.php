@@ -43,8 +43,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12 col-lg-8">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">Travel Deals</h2>
-                <h3 class="section-subheading text-muted">Get your bla bla bla</h3>
+                <h2 class="section-heading text-uppercase">Our Travel Packages</h2>
+                <h3 class="section-subheading text-muted">Enjoy and relax your holiday</h3>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $package->name }}</h5>
                         <p class="card-text">{{ $package->description }}</p>
-                        <a href="/bookings/order/{{ $package->id}}" target="_blank" class="btn btn-primary">Learn More</a>
+                        <a href="/bookings/order/{{ $package->id}}" target="_blank" class="btn btn-primary">Book now</a>
                     </div>
                 </div>
             </div>

@@ -23,18 +23,21 @@ class OrderController extends Controller
         $validatedData = $request->validate([
             'customer_name' => 'required|string|max:255',
             'customer_phone' => 'required|string|max:20',
+            'order_date' => 'required|date',
             'package_name' => 'nullable|string|max:255',
             'total_participant' => 'required|integer|min:1',
             'total_day' => 'required|integer|min:1',
-            'accommodation' => 'required|boolean',
-            'transportation' => 'required|boolean',
-            'food' => 'required|boolean',
             'travel_price' => 'nullable|integer',
             'total_bill' => 'nullable|integer',
         ]);
-
+    
+        // Handle checkbox fields
+        $validatedData['accommodation'] = $request->has('accommodation');
+        $validatedData['transportation'] = $request->has('transportation');
+        $validatedData['food'] = $request->has('food');
+    
         $order->update($validatedData);
-
+    
         return redirect()->route('orders.index')->with('success', 'Order updated successfully.');
     }
 

@@ -9,6 +9,7 @@
         @if(isset($order))
             @method('PUT')
         @endif
+        <input type="hidden" name="id" value="{{ old('id', $order->id ?? '') }}" required>
 
         <div class="form-group mb-3">
             <label for="customer_name">Customer Name</label>
@@ -18,6 +19,11 @@
         <div class="form-group  mb-3">
             <label for="customer_phone">Customer Phone</label>
             <input type="text" class="form-control" id="customer_phone" name="customer_phone" value="{{ old('customer_phone', $order->customer_phone ?? '') }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="order_date" class="form-label">Travel Date</label>
+            <input type="date" class="form-control" id="order_date" name="order_date" value="{{ old('order_date', $order->order_date) }}" required>
         </div>
 
         <div class="form-group mb-3">

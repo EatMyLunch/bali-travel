@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th data-field="id" data-sortable="true">Id</th>
-                <th data-field="created_at" data-sortable="true">Date Order</th>
+                <th data-field="order_date" data-sortable="true">Date Travel</th>
                 <th data-field="customer_name" data-sortable="true">Customer Name</th>
                 <th data-field="customer_phone" data-sortable="true">Customer Phone</th>
                 <th data-field="package_name" data-sortable="true">Package Name</th>
@@ -32,7 +32,7 @@
             @foreach($orders as $order)
             <tr>
                 <td>{{ $order->id }}</td>
-                <td>{{ $order->created_at }}</td>
+                <td>{{ $order->order_date }}</td>
                 <td>{{ $order->customer_name }}</td>
                 <td>{{ $order->customer_phone }}</td>
                 <td>{{ $order->package_name }}</td>
