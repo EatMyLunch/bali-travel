@@ -33,7 +33,7 @@
 <div class="owl-carousel owl-theme banner-carousel">
     @foreach($banners as $banner)
         <div class="item">
-            <img src="{{ $banner->image }}" alt="Banner">
+            <img src="{{ Storage::url($banner->image) }}" alt="Banner">
         </div>
     @endforeach
 </div>

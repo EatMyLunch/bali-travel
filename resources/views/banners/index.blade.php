@@ -19,7 +19,7 @@
             @foreach ($banners as $banner)
             <tr>
                 <td>{{ $banner->id }}</td>
-                <td><img src="{{ $banner->image }}" width="80"></td>
+                <td><img src="{{ Storage::url($banner->image) }}" width="80" alt="Banner Image"></td>
                 <td>
                 </td>
             </tr>
